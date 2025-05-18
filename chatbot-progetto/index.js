@@ -115,11 +115,9 @@ const knowledgeBase = [
     }
 ];
 
-// Funzione per ottenere la risposta migliore
 function getResponse(input) {
     const cleanedInput = input.toLowerCase();
 
-    // Controlla la base di conoscenza per le parole chiave
     for (const entry of knowledgeBase) {
         for (const keyword of entry.keywords) {
             if (cleanedInput.includes(keyword)) {
@@ -130,13 +128,11 @@ function getResponse(input) {
         }
     }
 
-    // Risposta predefinita se non ci sono corrispondenze
     const defaultResponse = knowledgeBase[knowledgeBase.length - 1].answers;
     const randomIndex = Math.floor(Math.random() * defaultResponse.length);
     return defaultResponse[randomIndex];
 }
 
-// Funzione per inviare il messaggio
 function sendMessage() {
     const text = userInput.value.trim();
     if (text === "") return;
@@ -155,7 +151,6 @@ function sendMessage() {
     }, 300);
 }
 
-// Funzione per aggiungere un messaggio
 function addMessage(text, sender) {
     const msg = document.createElement("div");
     msg.className = `message ${sender}`;
@@ -164,7 +159,6 @@ function addMessage(text, sender) {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-// Rimuove l'indicatore "Sta scrivendo..."
 function removeTypingIndicator() {
     const indicators = document.querySelectorAll(".bot");
     indicators.forEach(el => {
